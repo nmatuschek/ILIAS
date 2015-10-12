@@ -67,7 +67,7 @@ class ilQuestionExporter
 			{
 				$q_id = ilInternalLink::_extractObjIdOfTarget($a_ref_id);
 			}
-		} 
+		}
 
 		$this->q_gui =& assQuestionGUI::_getQuestionGUI("", $q_id);
 		
@@ -78,6 +78,7 @@ class ilQuestionExporter
 			$this->q_gui->object->feedbackOBJ->setPageObjectOutputMode($a_output_mode);
 			$this->json = $this->q_gui->object->toJSON();
 			$this->json_decoded = json_decode($this->json);
+
 			self::$exported[$this->json_decoded->id] = $this->json;
 			self::$mobs[$this->json_decoded->id] = $this->json_decoded->mobs;
 			return $this->$type();
