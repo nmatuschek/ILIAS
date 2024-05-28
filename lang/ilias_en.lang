@@ -2136,6 +2136,9 @@ auth#:#login_page_activate#:#Activate Editor for Selected Languages
 auth#:#login_page_editor_switched#:#The active page editor has been changed
 auth#:#login_page_switch_ipe#:#Use ILIAS page editor
 auth#:#login_page_switch_rte#:#Use Rich-text editor
+auth#:#logout_editor#:#Design Logout Page
+auth#:#logout_pages#:#Logout Pages
+auth#:#logout_page#:#Logout Page
 auth#:#lti_consumer_inactive#:#LTI tool consumer is disabled.
 auth#:#saml_tab_head_idp#:#IDP
 awrn#:#awareness_now_online#:#Online Now
