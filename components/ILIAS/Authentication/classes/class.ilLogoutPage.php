@@ -22,6 +22,6 @@ class ilLogoutPage extends ilPageObject
 {
     public function getParentType(): string
     {
-        return "auth_out";
+        return "aout";
     }
 }

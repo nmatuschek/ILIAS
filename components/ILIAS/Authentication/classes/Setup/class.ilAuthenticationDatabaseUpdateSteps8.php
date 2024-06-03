@@ -38,4 +38,15 @@ class ilAuthenticationDatabaseUpdateSteps8 implements ilDatabaseUpdateSteps
             );
         }
     }
+
+    public function step_2(): void
+    {
+        if($this->db->tableExists('copg_pobj_def')) {
+        $this->db->insert('copg_pobj_def', [
+            'parent_type' => ['text', 'aout'],
+            'class_name' => ['text', 'ilLogoutPage'],
+            'classes' => ['text', 'classes'],
+            'component' => ['text', 'components/ILIAS/Authentication']]);
+        }
+    }
 }

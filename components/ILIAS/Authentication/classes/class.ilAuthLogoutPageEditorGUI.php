@@ -163,7 +163,7 @@ class ilAuthLogoutPageEditorGUI
 
         $this->lng->loadLanguageModule('content');
 
-        if (!ilLogoutPage::_exists('auth_out', $this->key)) {
+        if (!ilLogoutPage::_exists('aout', $this->key)) {
             // doesn't exist -> create new one
             $new_page_object = new ilLogoutPage();
             $new_page_object->setParentId($this->key);
@@ -229,6 +229,7 @@ class ilAuthLogoutPageEditorGUI
                 break;
             case 'edit':
                 $this->ctrl->setParameter($this, 'logoutpage_languages_key', current($keys));
+                $this->ctrl->setParameter($this, 'key', ilLanguage::lookupId(current($keys)));
                 $this->ctrl->redirectByClass('ilLogoutPageGUI', 'edit');
                 break;
             default:

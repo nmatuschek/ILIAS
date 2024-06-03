@@ -18,15 +18,13 @@
 
 declare(strict_types=1);
 
-/**
- * @ilCtrl_Calls ilLogoutPageGUI: ilPageEditorGUI, ilEditClipboardGUI, ilMDEditorGUI
- * @ilCtrl_Calls ilLogoutPageGUI: ilPublicUserProfileGUI, ilNoteGUI
- * @ilCtrl_Calls ilLogoutPageGUI: ilPropertyFormGUI, ilInternalLinkGUI
- */
-class ilLogoutPageGUI extends ilPageObjectGUI
+class ilLogoutPageConfig extends ilPageConfig
 {
-    public function __construct(int $a_id = 0, int $a_old_nr = 0)
+    public function init(): void
     {
-        parent::__construct("aout", $a_id, $a_old_nr);
+        $this->setEnablePCType('LogouPageElement', true);
+        $this->setEnablePCType('FileList', false);
+        $this->setEnablePCType('Map', false);
+        $this->setEnableInternalLinks(true);
     }
 }
