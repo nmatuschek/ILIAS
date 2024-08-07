@@ -965,6 +965,33 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
         return $ret;
     }
 
+    private function getLogoutPageEditorHTML(): string
+    {
+        $lpe = ilAuthLogoutPageEditorSettings::getInstance();
+        $active_lang = $lpe->getIliasEditorLanguage($this->lng->getLangKey());
+
+        if (!$active_lang) {
+            return '';
+        }
+
+        // if page does not exist, return nothing
+        if (!ilPageUtil::_existsAndNotEmpty('aout', ilLanguage::lookupId($active_lang))) {
+            return '';
+        }
+
+        // get page object
+        $page_gui = new ilLogoutPageGUI(ilLanguage::lookupId($active_lang));
+
+        $page_gui->setStyleId(0);
+
+        $page_gui->setPresentationTitle('');
+        $page_gui->setTemplateOutput(false);
+        $page_gui->setHeader('');
+        $ret = $page_gui->showPage();
+
+        return $ret;
+    }
+
     private function showRegistrationLinks(string $page_editor_html): string
     {
         global $tpl;
@@ -1265,6 +1292,7 @@ class ilStartUpGUI implements ilCtrlBaseClassInterface, ilCtrlSecurityInterface
             $tpl->parseCurrentBlock();
         }
 
+        $tpl->setVariable('LPE', $this->getLogoutPageEditorHTML());
         $tpl->setVariable('TXT_PAGEHEADLINE', $this->lng->txt('logout'));
         $tpl->setVariable(
             'TXT_LOGOUT_TEXT',
